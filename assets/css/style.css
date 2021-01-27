@@ -1142,7 +1142,6 @@ a:hover {
 .php-email-form button[type="submit"]:hover {
   background: #3393ff;
 }
-
 @-webkit-keyframes animate-loading {
   0% {
     transform: rotate(0deg);
@@ -1160,6 +1159,25 @@ a:hover {
     transform: rotate(360deg);
   }
 }
+@-webkit-keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
 
 /*--------------------------------------------------------------
 # Blog
