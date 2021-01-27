@@ -13,6 +13,8 @@
   <link href="assets/img/C.5083.ABIN....jpg" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -583,7 +585,7 @@
                       </h5>
                     </div>
                     <div>
-                      <form id="gfrom" action="https://script.google.com/macros/s/AKfycbxHmO4Qq71KzXBKCz-KphiFqvvax5W8KWDR9WwjHSh1DSYLIj9qECNS/exec" method="post" role="form" class="php-email-form">
+                      <form id="submit-form" action=" " method="post" role="form" class="php-email-form">
                         <div class="row">
                           <div class="col-md-12 mb-3">
                             <div class="form-group">
@@ -610,7 +612,7 @@
                             </div>
                           </div>
                           <div class="col-md-12 text-center mb-3">
-                            <div class="loading">Meaage Sent<br>We will be in touch with You Soon!</div>
+                            <div class="loading">Sent message<br>We will be in touch with You Soon!</div>
                             <div class="error-message"></div>
                             <div class="sent-message">Your message has been sent. Thank you!</div>
                           </div>
@@ -621,6 +623,27 @@
                       </form>
                     </div>
                   </div>
+                  <script>
+                    $("#submit-form").submit((e)=>{
+                        e.preventDefault()
+                        $.ajax({
+                            url:" https://script.google.com/macros/s/AKfycbxHmO4Qq71KzXBKCz-KphiFqvvax5W8KWDR9WwjHSh1DSYLIj9qECNS/exec",
+                            data:$("#submit-form").serialize(),
+                            method:"post",
+                            success:function (response){
+                                alert("Form submitted successfully")
+                                window.location.reload()
+                                //window.location.href="https://google.com"
+                            },
+                            error:function (err){
+                                alert("Something Error")
+                
+                            }
+                        })
+                    })
+                </script>
+
+
                   <div class="col-md-6">
                     <div class="title-box-2 pt-4 pt-md-0">
                       <h5 id="get1" class="title-left">
