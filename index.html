@@ -589,29 +589,29 @@
                       </h5>
                     </div>
                     <div>
-                      <form id="submit-form" action="https://script.google.com/macros/s/AKfycbxHmO4Qq71KzXBKCz-KphiFqvvax5W8KWDR9WwjHSh1DSYLIj9qECNS/exec " method="post" role="form" >
+                      <form id="submit-form" action=" "  role="form" >
                         <div class="row">
                           <div class="col-md-12 mb-3">
                             <div class="form-group">
-                              <input type="text" name="name" class="form-control" id="name" required="true" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                              <input type="text" name="name" class="form-control" id="name"  placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                               <div class="validate"></div>
                             </div>
                           </div>
                           <div class="col-md-12 mb-3">
                             <div class="form-group">
-                              <input type="email" class="form-control" name="email" id="email" required="true" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                              <input type="email" class="form-control" name="email" id="email"  placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
                               <div class="validate"></div>
                             </div>
                           </div>
                           <div class="col-md-12 mb-3">
                             <div class="form-group">
-                              <input type="text" class="form-control" name="subject" id="subject" required="true" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                              <input type="text" class="form-control" name="subject" id="subject"  placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
                               <div class="validate"></div>
                             </div>
                           </div>
                           <div class="col-md-12">
                             <div class="form-group">
-                              <textarea class="form-control" name="message" rows="5" data-rule="required" required="true" data-msg="Please write something for us" placeholder="Message"></textarea>
+                              <textarea class="form-control" name="message" rows="5" data-rule="required"  data-msg="Please write something for us" placeholder="Message"></textarea>
                               <div class="validate"></div>
                             </div>
                           </div>
@@ -627,25 +627,7 @@
                       </form>
                     </div>
                   </div>
-                  <script>
-                    $("#submit-form").submit((e)=>{
-                        e.preventDefault()
-                        $.ajax({
-                            url:" https://script.google.com/macros/s/AKfycbxHmO4Qq71KzXBKCz-KphiFqvvax5W8KWDR9WwjHSh1DSYLIj9qECNS/exec",
-                            data:$("#submit-form").serialize(),
-                            method:"post",
-                            success:function (response){
-                                alert("Form submitted successfully")
-                                window.location.reload()
-                                //window.location.href="https://google.com"
-                            },
-                            error:function (err){
-                                alert("Something Error")
-                
-                            }
-                        })
-                    })
-                </script>
+            
 
 
                   <div class="col-md-6">
@@ -723,6 +705,60 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc= " crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
+  
+
+  <script>
+    $(document).ready(function(){
+      $("#submit-form").validate({
+        rules:{
+          name:{
+        required:true,
+          minlength:4,
+          maxlength:10,
+          //noSpace:true,
+          
+              },
+              email:{
+                required:true,
+                email:true,
+              },
+              subject:{
+                required:true,
+              },
+              submit:{
+                required:true,
+              },
+              message:{
+                required:true,
+                
+    
+              }
+            },
+            submitHandler:function(form){
+              event.preventDefault();
+              $.ajax({
+              url: "https://script.google.com/macros/s/AKfycbxHmO4Qq71KzXBKCz-KphiFqvvax5W8KWDR9WwjHSh1DSYLIj9qECNS/exec", //to be created from google sheet
+              data:$("#submit-form").serialize(),
+              method:"post",
+              success:function(response){
+                alert("Thank you for contacting me, I will get back to you shortly")
+                window.location.reload()
+                //window.location.href="https://google.com"
+              },
+              error: function (err) {
+                alert("Something Error")
+                // https://script.google.com/macros/s/AKfycbwo5Re-20rGt_iHuckTz5Kl8xtp7eOOi59D--GmVqO5ELGCPDVjYBIs/exec	
+              }
+            })
+          }
+        });
+        });
+  </script>
+
+ 
 
 </body>
 
